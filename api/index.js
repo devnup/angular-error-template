@@ -21,7 +21,7 @@ app.use(seo({
 }));
 
 // Public files
-app.use('/', express.static(path.join(__dirname, '../public')));
+app.use('/', express.static(path.join(__dirname, '../lib')));
 
 // API Routes
 app.use('/api', require('./controllers'));
