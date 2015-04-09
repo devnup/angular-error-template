@@ -1,7 +1,9 @@
 module.exports = function (grunt) {
 
+  // Get snippet information from package.json
   var pkg = grunt.file.readJSON('package.json');
 
+  // Fancy way to always create a file as as [package[name]].css
   var constructor = function (origin, dest) {
     var obj = {};
     obj[dest] = [origin];
@@ -27,7 +29,7 @@ module.exports = function (grunt) {
           var origin = 'lib/dist/js/**.js';
           var dest = 'lib/dist/js/' + pkg.name + '.min.js';
 
-          // Fancy way to always create a file as as [package.name].min.js
+          // Fancy way to always create a file as as [package[name]].css
           return constructor(origin, dest);
 
         })()
@@ -46,7 +48,7 @@ module.exports = function (grunt) {
           var origin = 'lib/src/less/**.less';
           var dest = 'lib/dist/css/' + pkg.name + '.css';
 
-          // Fancy way to always create a file as as [package.name].css
+          // Fancy way to always create a file as as [package[name]].css
           return constructor(origin, dest);
 
         })()
@@ -70,7 +72,7 @@ module.exports = function (grunt) {
           var origin = 'lib/dist/css/' + pkg.name + '.css';
           var dest = 'lib/dist/css/' + pkg.name + '.min.css';
 
-          // Fancy way to always create a file as as [package.name].css
+          // Fancy way to always create a file as as [package[name]].css
           return constructor(origin, dest);
 
         })()
