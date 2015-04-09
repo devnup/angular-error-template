@@ -1,0 +1,30 @@
+{
+  "tags": {
+    "allowUnknownTags": true
+  },
+  "source": {
+    "include": ["./api", "./README.md"],
+    "includePattern": ".+\\.js(doc)?$",
+    "excludePattern": "(^|\\/|\\\\)_"
+  },
+  "templates": {
+    "applicationName": "devnup/boilerplate - docs",
+    "cleverLinks": true,
+    "monospaceLinks": true,
+    "default": {
+      "outputSourceFiles" : true
+    },
+    "linenums": true
+  },
+  "plugins": ["plugins/markdown" ],
+  "markdown": {
+    "parser": "gfm",
+    "hardwrap": true
+  },
+  "opts": {
+    "destination": "./public/docs",
+    "recurse": true,
+    "template": "./jsdoc/template",
+    "tutorials": "./jsdoc/tutorials"
+  }
+}
