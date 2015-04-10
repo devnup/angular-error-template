@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 var pkg = require('./package.json');
-var debug = require('debug')(pkg.name);
 
 var app = require('./api');
 var server = require('http').createServer(app);

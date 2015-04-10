@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html ng-app="editorSample">
+<html ng-app="sample">
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Devnup Snippet Boilerplate - Sample</title>
+    <title>Angular Error Template - Sample</title>
     <link href="./bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="./bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet"/>
-    <link href="./dist/css/devnup-snippet-boilerplate.min.css" type="text/css" rel="stylesheet"/>
     <link href="./assets/css/style.css" type="text/css" rel="stylesheet"/>
 
 </head>
@@ -17,22 +16,22 @@
     <div class="page-header">
         <h4><a href="https://devnup.com">devnup</a> / <a href="http://snippets.devnup.com">snippets</a> /</h4>
 
-        <h1>snippet boilerplate</h1>
+        <h1>angular-error-template</h1>
     </div>
     <p class="lead">Your open source module starts here.</p>
 
     <p>For technical details about the angular module checkout the <a href="/docs">API Reference</a></p>
 
     <p style="margin-bottom: 20px;">You can get the repository at
-        <a href="http://git.devnup.com/devnup/devnup-snippet-boilerplate">Devnup Official GitLab</a> or
-        <a href="http://github.com/devnup/devnup-snippet-boilerplate">GitHub</a>.
+        <a href="http://git.devnup.com/devnup/angular-error-template">Devnup Official GitLab</a> or
+        <a href="http://github.com/devnup/angular-error-template">GitHub</a>.
     </p>
 
-    <iframe src="https://ghbtns.com/github-btn.html?user=devnup&repo=devnup-snippet-boilerplate&type=star&count=true"
+    <iframe src="https://ghbtns.com/github-btn.html?user=devnup&repo=angular-error-template&type=star&count=true"
             frameborder="0" scrolling="0" width="120px" height="20px"></iframe>
-    <iframe src="https://ghbtns.com/github-btn.html?user=devnup&repo=devnup-snippet-boilerplate&type=watch&count=true&v=2"
+    <iframe src="https://ghbtns.com/github-btn.html?user=devnup&repo=angular-error-template&type=watch&count=true&v=2"
             frameborder="0" scrolling="0" width="120px" height="20px"></iframe>
-    <iframe src="https://ghbtns.com/github-btn.html?user=devnup&repo=devnup-snippet-boilerplate&type=fork&count=true"
+    <iframe src="https://ghbtns.com/github-btn.html?user=devnup&repo=angular-error-template&type=fork&count=true"
             frameborder="0" scrolling="0" width="120px" height="20px"></iframe>
     <iframe src="https://ghbtns.com/github-btn.html?user=devnup&type=follow&count=true" frameborder="0" scrolling="0"
             width="170px" height="20px"></iframe>
@@ -43,17 +42,12 @@
         <form>
             <div class="row">
                 <div class="col-xs-12 col-sm-3 form-group">
-                    <label for="name" class="control-label">Name:</label>
-                    <input type="text" class="form-control" id="name" value="20" placeholder="20" ng-model="name">
+                    <label for="message" class="control-label">Message:</label>
+                    <input type="text" class="form-control" id="message" value="" placeholder="" ng-model="message">
                 </div>
                 <div class="col-xs-12 col-sm-3 form-group text-center" style="margin-top: 20px">
-                    <button type="submit" class="btn btn-primary btn-block btn-lg" ng-click="hello(name)">
-                        Hello
-                    </button>
-                </div>
-                <div class="col-xs-12 col-sm-3 form-group text-center" style="margin-top: 20px">
-                    <button type="submit" class="btn btn-primary btn-block btn-lg" ng-click="greet(name)">
-                        Greet
+                    <button type="submit" class="btn btn-primary btn-block btn-lg" ng-click="throwMessage(message)">
+                        Throw
                     </button>
                 </div>
             </div>
@@ -71,7 +65,7 @@
 <script type="text/javascript" src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="./bower_components/angular/angular.min.js"></script>
 
-<script type="text/javascript" src="./dist/js/devnup-snippet-boilerplate.min.js"></script>
+<script type="text/javascript" src="./dist/js/angular-error-template.js"></script>
 <script type="text/javascript" src="./sample.js"></script>
 
 </body>

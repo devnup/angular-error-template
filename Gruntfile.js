@@ -87,7 +87,12 @@ module.exports = function (grunt) {
     clean: ["lib/dist/", "lib/assets/css/"],
 
     watch: {
-      files: ['lib/**'],
+      files: [
+        'lib/index.html',
+        'lib/sample.js',
+        'lib/src/**',
+        'lib/assets/**'
+      ],
       tasks: ['dev']
     }
   });

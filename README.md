@@ -1,49 +1,47 @@
-devnup-snippet-boilerplate
-==========================
+angular-error-template
+======================
 
 ### Installation
 
-Using Bower: ```bower install --save angular-colors-util```
+Using Bower: ```bower install --save angular-error-template```
 
 ### Browser Usage
 
 Include the library in your HTML file:
 ```markup
 <!-- Angular Colors Util (Minified) -->
-<script type="text/javascript" src="bower_components/angular-colors-util/lib/dist/angular-colors-util.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-error-template/lib/dist/js/angular-error-template.min.js"></script>
 
 <!-- Angular Colors Util (Full) -->
-<script type="text/javascript" src="bower_components/angular-colors-util/lib/dist/angular-colors-util.js"></script>
+<script type="text/javascript" src="bower_components/angular-colors-util/lib/dist/js/angular-error-template.js"></script>
 ```
 
 Include the module in your Angular app:
 ```javascript
 angular
-    .module('myApp', ['com.devnup.color'])
-    .controller('BodyCtrl', ['$scope', '$color', function($scope, $color) {
+  .module('myApp', ['com.devnup.error'])
+  .controller('BodyCtrl', ['$scope', '$error', function($scope, $error) {
 
-        $scope.count = 5;
+    $scope.signup = function(input) {
 
-        $scope.colors = $color.generate(count).map(function(c) {
-            return {
-                color: c,
-                hover: $color.hover(c)
-            }
-        });
+      var hasErrors = !input || !input.email || !input.password;
 
-        console.info($scope.colors);
+      // Check and handle errors
+      $error.throw(hasErrors, {
+        code: 'MISSING_PARAMS',
+      });
 
-    }]);
+      // Continue request
+      // Ex: $rest.post('users/signup').success(console.log);
 
+    }
+  }
+]);
 ```
-
-### Samples
-
-- [Sample Color Generator (HTML + JS)](http://angular-colors-util.snippets.devnup.com)
 
 ### Documentation
 
-- [API Reference (JSDoc)](http://angular-colors-util.snippets.devnup.com/docs)
+- [API Reference (JSDoc)](http://angular-error-template.snippets.devnup.com/docs)
 
 ### Authors
 - [André Seiji](https://github.com/seijitamanaha) - [seiji@devnup.com](mailto:seiji@devnup.com)

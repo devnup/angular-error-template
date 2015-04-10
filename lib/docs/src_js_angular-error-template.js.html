@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Source: src/js/angular-error-template.js</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <script src="scripts/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/jaguar.css">
+    
+    
+    <script>
+    var config = {"monospaceLinks":true,"cleverLinks":true,"applicationName":"devnup/snippet-sample - docs","default":{"outputSourceFiles":true},"linenums":true};
+    </script>
+    
+
+    
+</head>
+<body>
+<div id="wrap" class="clearfix">
+    
+<div class="navigation">
+    <h3 class="applicationName"><a href="index.html">devnup/snippet-sample - docs</a></h3>
+
+    <div class="search">
+        <input id="search" type="text" class="form-control input-sm" placeholder="Search Documentations">
+    </div>
+
+    <p style="color: white; margin: 14px;">Module Reference</p>
+
+    <ul class="list">
+    
+        <li class="item" data-name="com.devnup.error.$error">
+            <span class="title">
+                <a href="com.devnup.error.$error.html">com.devnup.error.$error</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+                
+                <span class="subtitle">Methods</span>
+                
+                    <li data-name="com.devnup.error.$error#register"><a href="com.devnup.error.$error.html#register">register</a></li>
+                
+                    <li data-name="com.devnup.error.$error#throw"><a href="com.devnup.error.$error.html#throw">throw</a></li>
+                
+                    <li data-name="com.devnup.error.$error#throwError"><a href="com.devnup.error.$error.html#throwError">throwError</a></li>
+                
+                    <li data-name="com.devnup.error.$error#throwMessage"><a href="com.devnup.error.$error.html#throwMessage">throwMessage</a></li>
+                
+                </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+    </ul>
+
+</div>
+    <div class="main">
+        <h1 class="page-title" data-filename="src_js_angular-error-template.js.html">Source: src/js/angular-error-template.js</h1>
+        
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Angular Error Template
+ * v0.0.1
+ *
+ * @alias com.devnup.error
+ *
+ * @author luis@devnup.com
+ * @since 09/04/15.
+ */
+angular.module('com.devnup.error', [])
+
+  .factory('$errorEntry', [
+
+    function () {
+
+      /**
+       * Angular Error Entry Factory
+       * v0.0.1
+       *
+       * @class
+       * @type {Function}
+       * @alias com.devnup.error.$errorEntry
+       *
+       * @param {Object} input The input error object.
+       * @param {String} input.message The error message.
+       * @param {String} [input.code] The error identifier code.
+       * @param {String} [input.timestamp] The error timestamp. Default: now.
+       * @param {String} [input.data] The error data. Default: {}.
+       * @param {String} [input.stack] The error stack. Default: current stack.
+       */
+      return function (input) {
+
+        return angular.copy({
+          message: input.message,
+          timestamp: input.timestamp || Date.now(),
+          data: input.data || {},
+          stack: input.stack || new Error().stack
+        });
+      };
+
+    }])
+
+  .factory('$error', [
+
+    '$errorEntry',
+
+    /**
+     * Angular Error Service
+     * v0.0.1
+     *
+     * @class
+     * @type {Function}
+     * @alias com.devnup.error.$error
+     */
+      function ($Entry) {
+
+      var custom = [];
+
+      var handler = function (entry) {
+
+        // TODO: Default error handler
+        console.error(entry);
+
+        custom.length ? custom.map(function (h) {
+          return h(entry)
+        }) : void(0);
+      };
+
+      // Dummy public interface
+      var pub = {
+
+        /**
+         * Register a new error handler
+         *
+         * @alias com.devnup.error.$error#register
+         * @param {Function} handler The error handler
+         */
+        register: function (handler) {
+          custom.push(handler);
+        },
+
+        /**
+         * Throw a new error
+         *
+         * @alias com.devnup.error.$error#throw
+         *
+         * @param {Boolean} [condition] The condition to check before throwing the error
+         * @param {String} [error] The error message as a string
+         * @param {Object} [error] The error as an object
+         * @param {String} [error.message] The error message
+         * @param {Date} [error.timestamp] The error timestamp. Default: now.
+         * @param {Object} [error.data] The error data. Default: {}.
+         * @param {Object} [error.stack] The error stack. Default: {}.
+         */
+        throw: function (condition, error) {
+
+          if (typeof condition === typeof true) {
+
+            return condition ? handler(error) : void(0);
+
+          } else if (typeof condition === typeof {}) {
+
+            return handler(condition);
+
+          } else if (typeof condition === typeof 'string') {
+
+            return handler({
+              message: error
+            });
+
+          }
+        },
+
+        /**
+         * Throw an error message
+         *
+         * @alias com.devnup.error.$error#throwMessage
+         * @param {String} message The error message
+         */
+        throwMessage: function (message) {
+          pub.throw(true, message);
+        },
+
+        /**
+         * Throw an error
+         *
+         * @alias com.devnup.error.$error#throwError
+         * @param {Error} error The error
+         */
+        throwError: function (error) {
+          pub.throw(true, error);
+        }
+
+      };
+
+      // Return dummy public interface
+      return pub;
+
+    }]);</code></pre>
+        </article>
+    </section>
+
+
+
+
+
+
+        
+
+        <footer>
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-beta3</a> on Thu Apr 09 2015 23:29:08 GMT-0300 (BRT)
+        </footer>
+    </div>
+</div>
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+<script src="scripts/main.js"></script>
+</body>
+</html>
