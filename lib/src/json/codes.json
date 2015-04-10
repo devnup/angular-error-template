@@ -1,0 +1,6 @@
+{
+  "UNKNOWN_ERROR": "Unknown error",
+  "MISSING_PARAM": {
+    "message": "Invalid params"
+  }
+}
