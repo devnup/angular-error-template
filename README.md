@@ -26,14 +26,18 @@ angular
 
       var hasErrors = !input || !input.email || !input.password;
 
-      // Check and handle errors
-      $error.throw(hasErrors, {
-        code: 'MISSING_PARAMS',
-      });
+      if(hasErrors) {
 
-      // Continue request
-      // Ex: $rest.post('users/signup').success(console.log);
+        // Check and handle errors
+        $error.throw('MISSING_PARAMS');
 
+      } else {
+
+        // Continue request
+        // Ex: $rest.post('users/signup').success(console.log);
+        return;
+
+      }
     }
   }
 ]);
