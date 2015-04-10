@@ -9,10 +9,10 @@ Using Bower: ```bower install --save angular-error-template```
 
 Include the library in your HTML file:
 ```markup
-<!-- Angular Colors Util (Minified) -->
+<!-- Angular Error Template (Minified) -->
 <script type="text/javascript" src="bower_components/angular-error-template/lib/dist/js/angular-error-template.min.js"></script>
 
-<!-- Angular Colors Util (Full) -->
+<!-- Angular Error Template (Full) -->
 <script type="text/javascript" src="bower_components/angular-colors-util/lib/dist/js/angular-error-template.js"></script>
 ```
 
